@@ -70,9 +70,11 @@ Respond with JSON:
     const apiKey = Deno.env.get('GEMINI_API_KEY')
     if (!apiKey) throw new Error('GEMINI_API_KEY not found in secrets')
 
-    const genAI = new GoogleGenAI(apiKey)
-    const model = genAI.getGenerativeModel({ 
+    const genAI = new GoogleGenAI({ apiKey })
+
+    const result = await genAI.models.generateContent({
       model: "gemini-1.5-flash",
+      contents: `Analyze this JD: ${jd}\n\nSystem Instruction: ${systemPrompt}`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -101,8 +103,7 @@ Respond with JSON:
       }
     })
 
-    const result = await model.generateContent(`Analyze this JD: ${jd}\n\nSystem Instruction: ${systemPrompt}`)
-    const responseText = result.response.text
+    const responseText = result.text
 
     return new Response(responseText, {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

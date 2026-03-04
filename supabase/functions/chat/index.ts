@@ -122,15 +122,14 @@ ${faqs?.map(f => `Q: ${f.question}\nA: ${f.answer}`).join('\n\n') || 'None'}
     const apiKey = Deno.env.get('GEMINI_API_KEY')
     if (!apiKey) throw new Error('GEMINI_API_KEY not found in secrets')
 
-    const genAI = new GoogleGenAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
-
-    const chat = model.startChat({
+    const genAI = new GoogleGenAI({ apiKey })
+    const chat = genAI.chats.create({
+      model: "gemini-1.5-flash",
       history: history || [],
-      systemInstruction: systemPrompt,
+      config: { systemInstruction: systemPrompt },
     })
 
-    const result = await chat.sendMessage(message)
+    const result = await chat.sendMessage({ message })
     const responseText = result.text
 
     // 4. Return the response
