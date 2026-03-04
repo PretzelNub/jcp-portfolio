@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 
 import { supabase, isSupabaseConfigured } from "./supabaseClient";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || "" });
 
 export async function chatWithAI(message: string, history: { role: "user" | "model", parts: { text: string }[] }[], context?: any) {
   // Try to call Supabase Edge Function first if configured
