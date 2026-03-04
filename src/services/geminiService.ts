@@ -22,7 +22,7 @@ export async function chatWithAI(message: string, history: { role: "user" | "mod
   }
 
   // Fallback to local Gemini call
-  const model = "gemini-3-flash-preview";
+  const model = "gemini-2.0-flash";
   
   const profile = context?.profile || {};
   const experiences = context?.experiences || [];
@@ -100,7 +100,7 @@ export async function analyzeJD(jd: string, context?: any) {
   }
 
   // Fallback to local Gemini call
-  const model = "gemini-3.1-pro-preview";
+  const model = "gemini-2.0-flash";
   
   const profile = context?.profile || {};
   const experiences = context?.experiences || [];
