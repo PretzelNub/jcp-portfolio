@@ -73,7 +73,7 @@ Respond with JSON:
     const genAI = new GoogleGenAI({ apiKey })
 
     const result = await genAI.models.generateContent({
-      model: "gemini-1.5-flash",
+      model: "gemini-1.5-flash-latest",
       contents: `Analyze this JD: ${jd}\n\nSystem Instruction: ${systemPrompt}`,
       config: {
         responseMimeType: "application/json",
