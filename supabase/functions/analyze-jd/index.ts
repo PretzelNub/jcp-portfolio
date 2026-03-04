@@ -72,7 +72,7 @@ Respond with JSON:
 
     const genAI = new GoogleGenAI(apiKey)
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.0-flash",
+      model: "gemini-1.5-flash",
       config: {
         responseMimeType: "application/json",
         responseSchema: {

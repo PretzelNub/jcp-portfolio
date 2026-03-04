@@ -123,7 +123,7 @@ ${faqs?.map(f => `Q: ${f.question}\nA: ${f.answer}`).join('\n\n') || 'None'}
     if (!apiKey) throw new Error('GEMINI_API_KEY not found in secrets')
 
     const genAI = new GoogleGenAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
     const chat = model.startChat({
       history: history || [],
