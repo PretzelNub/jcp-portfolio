@@ -124,7 +124,7 @@ ${faqs?.map(f => `Q: ${f.question}\nA: ${f.answer}`).join('\n\n') || 'None'}
 
     const genAI = new GoogleGenAI({ apiKey })
     const chat = genAI.chats.create({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.0-flash-001",
       history: history || [],
       config: { systemInstruction: systemPrompt },
     })
